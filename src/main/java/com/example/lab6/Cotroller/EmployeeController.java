@@ -75,6 +75,11 @@ public class EmployeeController {
         }
 
         List<Employee> employeeList = new ArrayList<>();
+        if(employeeList.isEmpty()){
+            return ResponseEntity.status(400).body(new ApiResponse("No Employee found"));
+        }
+
+        //check if the array is empty or not
 
         for(Employee employee : employees){
             if(employee.getPosition().equalsIgnoreCase(position)){
@@ -90,8 +95,11 @@ public class EmployeeController {
         if(minAge<25 || maxAge <25 ){
             return ResponseEntity.status(400).body("Age must be more than 25");
         }
-
+//
         List<Employee> employeeList = new ArrayList<>();
+        if(employeeList.isEmpty()){
+            return ResponseEntity.status(400).body(new ApiResponse("No Employee found"));
+        }
 
         for(Employee employee: employees){
             if(employee.getAge()>=minAge && employee.getAge()<=maxAge){
@@ -126,6 +134,10 @@ public class EmployeeController {
 
         List<Employee> employeeList = new ArrayList<>();
 
+        if(employeeList.isEmpty()){
+            return ResponseEntity.status(400).body(new ApiResponse("No Employee found"));
+        }
+//
         for(Employee employee : employees){
             if(employee.isOnLeave()){
                 employeeList.add(employee);
